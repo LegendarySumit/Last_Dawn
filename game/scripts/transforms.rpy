@@ -23,11 +23,24 @@ transform char_right:
     yalign 0.98
     zoom 0.55
 
+transform char_far_right:
+    xalign 0.92
+    yalign 0.95
+    xzoom 0.75
+    yzoom 0.75
+
+
+
 transform demon_approach:
     anchor (0.5, 1.0)
     xalign 1.2 yalign 0.98
     zoom 0.55
     linear 1.2 xalign 0.65
+
+transform demon_center:
+    xalign 0.5
+    yalign 0.95
+
 
 transform glow_pulse:
     alpha 0.0
@@ -54,10 +67,11 @@ transform hero_focus:
 # GROUP SCENE BALANCE
 # =========================
 transform char_left_wide:
-    xalign 0.18
+    xalign 0.15
     yalign 0.95
-    xzoom 0.6
-    yzoom 0.6
+    xzoom 0.7
+    yzoom 0.7
+
 
 transform char_center_focus:
     xalign 0.5
@@ -70,3 +84,9 @@ transform char_right_wide:
     yalign 0.95
     xzoom 0.6
     yzoom 0.6
+
+transform char_mid_left:
+    xalign 0.32
+    yalign 0.95
+    xzoom 0.7
+    yzoom 0.7
