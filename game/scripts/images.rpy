@@ -1,13 +1,15 @@
 # images.rpy
 # Register backgrounds (scaled to the current screen size)
-image bg worldisfine = Image("images/backgrounds/worldisfine.png", xysize=(config.screen_width, config.screen_height))
-image bg night1 = Image("images/backgrounds/nightscene1.png", xysize=(config.screen_width, config.screen_height))
-image bg night_mall = Image("images/backgrounds/nightscenemall.png", xysize=(config.screen_width, config.screen_height))
-image bg opener1 = Image("images/backgrounds/nightsceneopenervn.png", xysize=(config.screen_width, config.screen_height))
-image bg opener2 = Image("images/backgrounds/nightsceneopenervn2.png", xysize=(config.screen_width, config.screen_height))
-image bg secret1 = Image("images/backgrounds/secretplace1.png", xysize=(config.screen_width, config.screen_height))
-image bg secret2 = Image("images/backgrounds/secretplace2.png", xysize=(config.screen_width, config.screen_height))
-image bg boss = Image("images/backgrounds/thebosschamber.png", xysize=(config.screen_width, config.screen_height))
+# images.rpy — BACKGROUNDS (NO SCALING HERE)
+image bg worldisfine = "images/backgrounds/worldisfine.png"
+image bg night1 = "images/backgrounds/nightscene1.png"
+image bg night_mall = "images/backgrounds/nightscenemall.png"
+image bg opener1 = "images/backgrounds/nightsceneopenervn.png"
+image bg opener2 = "images/backgrounds/nightsceneopenervn2.png"
+image bg secret1 = "images/backgrounds/secretplace1.png"
+image bg secret2 = "images/backgrounds/secretplace2.png"
+image bg boss = "images/backgrounds/thebosschamber.png"
+
 
 # Effects (overlay) — scaled down so they don't cover the whole screen
 image magicglow = Transform("images/effects/magicglow.png", anchor=(0.5, 0.5), zoom=0.4)

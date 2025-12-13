@@ -1,5 +1,6 @@
 ﻿###############################################
 # PROJECT: VOIDWALKER
+# Story-driven progression (ACT-based)
 ###############################################
 
 define flash = Fade(.25, 0, .75, color="#fff")
@@ -13,165 +14,217 @@ define keon = Character("Keon", color="#ffe0ac")
 define narrator = Character(None)
 
 ###############################################
-# DEMON FIGHT
-###############################################
-label demon_encounter:
-
-    $ quick_menu  = False
-
-    scene bg secret1 at bg_full:
-        xysize (config.screen_width, config.screen_height)
-    with fade
-
-    play music bgm_mystery fadein 1.0
-    play sound sfx_golem_walk loop
-
-    narrator "Heavy footsteps echo through the empty street..."
-
-    show demon walk at char_right
-    with dissolve
-
-    narrator "Something emerges from the shadows."
-
-    show demon walk at demon_approach
-    with hpunch
-
-    play sound sfx_growl
-    narrator "It charges!"
-
-    show demon cleave at truecenter
-    with flash
-
-    play sound sfx_whoosh
-    show magicglow at truecenter, glow_pulse
-    with dissolve
-    pause 0.6
-    hide magicglow with dissolve
-
-    show demon hit at truecenter
-    with vpunch
-    pause 0.3
-
-    show demon death at truecenter
-    with dissolve
-    play sound sfx_laugh
-    pause 0.8
-
-    stop sound fadeout 0.5
-    stop music fadeout 1.0
-
-    narrator "The creature collapses, melting into ash."
-
-    return
-
-###############################################
-# START
+# ACT 0 — THE WORLD BEFORE
 ###############################################
 label start:
-    $ quick_menu =  False
+    $ quick_menu = False
 
-    scene bg opener1 at bg_full:
-        xysize (config.screen_width, config.screen_height)
+    scene bg worldisfine at bg_full
     with fade
 
-    play music bgm_dark fadein 1.0
-
-    narrator "The sky was wrong that day. Colors drained. Air heavy like it was waiting for something."
-
-    show hero_neutral at char_default
+    show hero_neutral at hero_focus
     with dissolve
 
-    you "Everything felt… quiet. Too quiet."
+    play music bgm_opener fadein 2.0
 
-    show fog at truecenter 
+    narrator "It was just another day."
+    narrator "Nothing felt special."
+    narrator "The world moved the way it always had."
+
+    narrator "People laughed. Cars passed by. Life went on."
+
+    you "I remember thinking how ordinary everything felt."
+
+    pause 0.8
+    stop music fadeout 2.0
+    jump act_event
+
+###############################################
+# ACT 1 — THE EVENT
+###############################################
+label act_event:
+
+    scene bg opener1 at bg_full
+    with fade
+
+    show hero_neutral at hero_focus
     with dissolve
-    pause 0.4
 
-    narrator "A soft rustling. A slip of paper drifting across the floor. Ink that moved like it was alive."
+    play music bgm_dark fadein 2.0
 
-    show lightburst at truecenter 
+    narrator "Then the sky changed."
+    narrator "Dark clouds rolled in without warning."
+    narrator "The colors of the world began to drain."
+
+    show fog at truecenter with dissolve
+    pause 1.0
+
+    narrator "The air grew heavy."
+    narrator "Unnatural."
+
+    narrator "Like something unseen had arrived."
+
+    pause 1.0
+    jump act_abductions
+
+###############################################
+# ACT 2 — THE ABDUCTIONS
+###############################################
+label act_abductions:
+
+    scene bg night1 at bg_full
+    with fade
+
+    show hero_neutral at hero_focus
     with dissolve
+
+    play music bgm_mystery fadein 2.0
+
+    narrator "People started disappearing."
+    narrator "Adults vanished first."
+    narrator "Then children."
+    narrator "Babies."
+
+    narrator "Anyone who stepped outside."
+    narrator "Anyone exposed."
+
+    narrator "Those who stayed indoors… survived."
+
+    you "My parents went out that night."
+
+    pause 1.0
+    jump act_failed_abduction
+
+###############################################
+# ACT 3 — FAILED ABDUCTION
+###############################################
+label act_failed_abduction:
+
+    scene bg opener2 at bg_full
+    with fade
+
+    show hero_neutral at hero_focus
+    with dissolve
+
+    narrator "I was alone."
+    narrator "The middle room window was open."
+
+    play sound sfx_longgrowl
+
+    narrator "Something noticed me."
+    narrator "A presence."
+    narrator "Dark. Watching."
+
+    narrator "It came for me."
+
+    pause 0.8
+    jump act_artifact
+
+###############################################
+# ACT 4 — THE ARTIFACT
+###############################################
+label act_artifact:
 
     play sound sfx_whoosh
 
-    narrator "The moment you touched it, something ignited inside you."
+    narrator "But I wasn’t taken."
+    narrator "Instead… something fell."
 
+    show lightburst at truecenter with dissolve
     show magicglow at truecenter, glow_pulse
-    with dissolve
-    pause 1.0
+
+    narrator "A piece of paper."
+    narrator "Covered in symbols that moved."
+
+    pause 1.2
     hide magicglow with dissolve
 
-    you "…What is happening to me?"
+    narrator "Something ignited inside me."
 
-    menu:
-        "What do you do?"
-        "Stay inside.":
-            jump stay_path
+    you "…I can feel it."
 
-        "Step outside.":
-            jump outside_path
+    narrator "Power."
+    narrator "Resistance."
+    narrator "Awareness."
+
+    pause 1.0
+    jump act_world_after
 
 ###############################################
-# BRANCHES
+# ACT 5 — THE WORLD AFTER
+###############################################
+label act_world_after:
+
+    scene bg secret1 at bg_full
+    with fade
+
+    show hero_neutral at hero_focus
+    with dissolve
+
+    play music bgm_mystery fadein 2.0
+
+    narrator "The world was empty."
+    narrator "Dark."
+    narrator "Silent."
+    narrator "Wrong."
+
+    narrator "I scavenged."
+    narrator "I survived."
+
+    pause 1.0
+    jump act_meeting_others
+
+###############################################
+# ACT 6 — MEETING OTHERS
 ###############################################
 
-label stay_path:
+label act_meeting_others:
 
-    narrator "You barricade yourself in. The silence becomes unbearable."
-
-    play music bgm_opener fadein 1.0
-
-    narrator "But something outside starts moving. Heavy. Slow."
-
-    jump demon_ambush
-
-label outside_path:
-
-    scene bg night_mall at bg_full:
-        xysize (config.screen_width, config.screen_height)
-    play music bgm_mystery fadein 1.0
-
-    narrator "The streets are empty. Dark. Dead silent."
-
-    narrator "Until the footsteps begin…"
-
-    jump demon_ambush
-
-label demon_ambush:
-
-    play music bgm_walk_secret fadein 1.0
-
-    call demon_encounter
-
-    show mira_neutral1 at char_left
-    show keon_neutral at char_right
+    scene bg secret2 at bg_full
     with fade
 
-    mira "Hey! Are you alive?"
-    keon "We heard something. Did you kill that thing?"
+    play music bgm_walk_secret fadein 2.0
 
-    you "I think the paper… saved me."
+    show mira_neutral1 at char_left_wide
+    show hero_neutral at char_center_focus
+    show keon_neutral at char_right_wide
+    with dissolve
 
-    menu:
-        "Who leads the group?"
-        "Mira leads.":
-            $ leader = "mira"
-            mira "Then stick close. We do this smart."
+    mira "You too?"
+    mira "You can walk out here?"
 
-        "Keon leads.":
-            $ leader = "keon"
-            keon "Alright. Follow me. We find the source of all this."
+    keon "So we’re not the only ones."
 
-    jump scene_end_first
+    you "You survived… like me?"
 
-label scene_end_first:
+    narrator "They had powers too."
+    narrator "Different."
+    narrator "But similar."
 
-    scene bg secret2 at bg_full:
-        xysize (config.screen_width, config.screen_height)
+    narrator "We weren’t alone anymore."
+
+    pause 0.8
+
+    jump act_first_truth
+
+
+###############################################
+# ACT 7 — FIRST SENTINEL
+###############################################
+label act_first_truth:
+
+    scene bg boss at bg_full
     with fade
 
-    play music bgm_dark fadein 0.8
+    play music bgm_boss fadein 2.0
+    play sound sfx_golem_walk loop
 
-    narrator "This… is only the beginning."
+    narrator "The ground trembled."
+
+    show demon walk at char_right with dissolve
+
+    narrator "This was no longer survival."
+
+    narrator "This was war."
 
     return

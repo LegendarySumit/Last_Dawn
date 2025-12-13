@@ -1695,3 +1695,20 @@ style slider_vbox:
 style slider_slider:
     variant "small"
     xsize 900
+
+# =========================
+# TOP DIALOGUE SCREEN
+# =========================
+screen say_top(who, what):
+    window:
+        style "say_window"
+        yalign 0.05     # near top
+        xalign 0.5
+        xsize 0.9
+
+        has vbox
+
+        if who is not None:
+            text who id "who" style "say_label"
+
+        text what id "what" style "say_dialogue"

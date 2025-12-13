@@ -1,9 +1,9 @@
 transform bg_full:
-    # Keep backgrounds contained within the screen without over-scaling or cropping.
-    size (config.screen_width, config.screen_height)
-    fit "contain"
     xalign 0.5
     yalign 0.5
+    xsize config.screen_width
+    ysize config.screen_height
+
 
 transform char_default:
     anchor (0.5, 1.0)
@@ -34,3 +34,39 @@ transform glow_pulse:
     linear 0.25 alpha 1.0
     linear 0.4 alpha 0.6
     linear 0.3 alpha 0.0
+
+transform hero_intro:
+    xalign 0.62
+    yalign 0.95
+    zoom 0.75
+
+# =========================
+# PROTAGONIST — EXTREME RIGHT
+# =========================
+transform hero_focus:
+    xalign 0.78        # extreme right, still visible
+    yalign 0.95
+    xzoom 0.78
+    yzoom 0.78
+
+
+# =========================
+# GROUP SCENE BALANCE
+# =========================
+transform char_left_wide:
+    xalign 0.18
+    yalign 0.95
+    xzoom 0.6
+    yzoom 0.6
+
+transform char_center_focus:
+    xalign 0.5
+    yalign 0.95
+    xzoom 0.7
+    yzoom 0.7
+
+transform char_right_wide:
+    xalign 0.82
+    yalign 0.95
+    xzoom 0.6
+    yzoom 0.6
