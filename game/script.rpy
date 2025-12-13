@@ -23,7 +23,7 @@ label start:
     scene bg worldisfine at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_happy at hero_focus
     with dissolve
 
     play music bgm_opener fadein 2.0
@@ -48,7 +48,7 @@ label act_event:
     scene bg opener1 at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_scared at hero_focus
     with dissolve
 
     play music bgm_dark fadein 2.0
@@ -76,7 +76,7 @@ label act_abductions:
     scene bg night1 at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_sad at hero_focus
     with dissolve
 
     play music bgm_mystery fadein 2.0
@@ -104,7 +104,7 @@ label act_failed_abduction:
     scene bg opener2 at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_scared at hero_focus
     with dissolve
 
     narrator "I was alone."
@@ -159,7 +159,7 @@ label act_first_steps:
     scene bg night1 at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_doubtful at hero_focus
     with dissolve
 
     play music bgm_mystery fadein 2.0
@@ -188,7 +188,7 @@ label act_night_mall:
     scene bg night_mall at bg_full
     with fade
 
-    show hero_neutral at hero_focus
+    show hero_doubtful at hero_focus
     with dissolve
 
     play music bgm_walk_secret fadein 2.0
@@ -318,9 +318,9 @@ label act_first_truth:
 
     # Party enters the castle
     # Party positions BEFORE demon appears
-    show mira_neutral1 at char_left_wide
-    show keon_neutral at char_mid_left
-    show hero_neutral at char_far_right
+    show mira_angry at char_left_wide
+    show keon_confused at char_mid_left
+    show hero_angry at char_far_right
     with dissolve
 
     pause 0.4
@@ -328,8 +328,6 @@ label act_first_truth:
     play sound sfx_growl
     show demon walk at demon_center
     with dissolve
-
-
 
     narrator "We finally reached it."
     narrator "The heart of the corruption."
